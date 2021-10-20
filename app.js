@@ -22,6 +22,15 @@ app.get('/api/users/:id', (req, res) => {
   res.send(user);
 });
 
+app.post('/api/courses',(req, res) => {
+  const user = {
+    id: users.length + 1,
+    name: req.body.name,
+  };
+  users.push(users);
+  res.send(user);
+});
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
 
