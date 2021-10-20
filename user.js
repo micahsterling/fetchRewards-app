@@ -1,6 +1,8 @@
 
 const EventEmitter = require('events');
 
+
+
 var points = this.points;
 
 class User extends EventEmitter {
