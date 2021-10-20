@@ -1,0 +1,23 @@
+{
+  "name": "fetchRewards-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/micahsterling/fetchRewards-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/micahsterling/fetchRewards-app/issues"
+  },
+  "homepage": "https://github.com/micahsterling/fetchRewards-app#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
