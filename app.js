@@ -1,3 +1,4 @@
+require('./payer');
 const express = require('express');
 const app = express();
 const EventEmitter = require('events');
@@ -13,12 +14,12 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api/users', (rep,res) => {
-  res.send(users);
+  res.send(payer);
 });
 
 app.get('/api/users/:id', (req, res) => {
   const user = users.find(u => u.id === parseInt(req.params.id));
-  if (!user) res.status(404).send('Users Id was not found');
+  if (!user) return res.status(404).send('Users Id was not found');
   res.send(user);
 });
 
@@ -28,6 +29,14 @@ app.post('/api/courses',(req, res) => {
     name: req.body.name,
   };
   users.push(users);
+  res.send(user);
+});
+
+app.put('/api/users/:id', (req,res) => {
+  const user = users.find(u => u.id === parseInt(req.params.id));
+  if (!user) return res.status(404).send('Users Id was not found');
+
+  user.points = req.body.points;
   res.send(user);
 });
 
