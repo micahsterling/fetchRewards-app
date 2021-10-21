@@ -45,7 +45,7 @@ for (let i = 0; i < payers.length ;i++) {
     payers.splice(i, 1);
   }
 }
-console.log("subtraction", payers);
+console.log("settling", payers);
 
 function sortPayerDate(a,b) { 
   if (a.timestamp < b.timestamp) {
@@ -60,18 +60,22 @@ payers.sort(sortPayerDate);
 console.log("before",payers);
 let counter = 0;
 const target = 5000;
+let pointDeduction = [];
 
 for (let i = 0; counter < target; i++) {
   if (counter + payers[i].points > target) {
     let diff = target - counter;
-    counter += diff; 
+    counter += diff;
+    pointDeduction.push({"payer": payers[i].payer, "points":-diff}); 
     payers[i].points -= diff;
   } else {
     counter += payers[i].points;
+    pointDeduction.push({"payer": payers[i].payer, "points":-payers[i].points});
     payers[i].points -= payers[i].points;
   } 
-
+  
 }
+console.log("deduct",pointDeduction);
 console.log("after purchase", payers);
 
 
