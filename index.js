@@ -1,21 +1,30 @@
 const users = require('./user');
+const path = require('path');
 // const User = require('./user');
-const {payer, pointDeduction } = require('./payer');
+const {payerTotals, pointDeduction, transaction } = require('./payer');
 const express = require('express');
 const app = express();
 // const EventEmitter = require('events');
 
+console.log("PAYER!!!!!",payerTotals);
+// app.get('/', (req, res) => {
+//   res.send('<p>hello world!!!</p>');
+// });
 
-app.get('/', (req, res) => {
-  res.send('hello world!!!');
+app.get('/', (req, res,next)=>{
+  // res.send('<form action="/test/post-username" method="POST"> <input type="text" name="username">    <button type="submit"> Send </button> </form>'); res.sendFile(path.join(__dirname, 'views', 'add-   user.html'));
+  res.sendFile(path.join(__dirname, 'user.html'));
 });
 
 app.get('/api/users', (rep,res) => {
   res.send(users);
 });
 
+app.get('/api/transaction', (rep,res) => {
+  res.send(transaction);
+});
 app.get('/api/payer', (rep,res) => {
-  res.send(payer);
+  res.send(payerTotals);
 });
 
 app.get('/api/deduction', (rep,res) => {
