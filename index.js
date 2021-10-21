@@ -1,4 +1,4 @@
-require('./payer');
+const payer = require('./payer');
 const express = require('express');
 const app = express();
 const EventEmitter = require('events');
