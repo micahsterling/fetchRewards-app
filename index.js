@@ -1,19 +1,20 @@
+const users = require('./user');
+// const User = require('./user');
 const payer = require('./payer');
 const express = require('express');
 const app = express();
-const EventEmitter = require('events');
+// const EventEmitter = require('events');
 
-const users = [
-  {id:1, name: 'Jack', points: 1000},
-  {id:2, name: 'James',points: 2000},
-  {id:3, name: 'Jim', points: 3000},
-];
 
 app.get('/', (req, res) => {
   res.send('hello world!!!');
 });
 
 app.get('/api/users', (rep,res) => {
+  res.send(users);
+});
+
+app.get('/api/payer', (rep,res) => {
   res.send(payer);
 });
 
@@ -45,14 +46,13 @@ app.listen(port, () => console.log(`Listening on port ${port}...`));
 
 
 
-const User = require('./user');
-const user = new User();
-// Register a listener
-user.on('pointsRecieved', (arg) => {
-  console.log('points updated',arg);
-});
-user.on('pointsSubtracted', (arg) => {
-  console.log('points updated',arg);
-});
+// const user = new User();
+// // Register a listener
+// user.on('pointsRecieved', (arg) => {
+//   console.log('points updated',arg);
+// });
+// user.on('pointsSubtracted', (arg) => {
+//   console.log('points updated',arg);
+// });
 
-user.points('points recieved');
+// user.points('points recieved');
