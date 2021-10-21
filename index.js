@@ -1,6 +1,6 @@
 const users = require('./user');
 // const User = require('./user');
-const payer = require('./payer');
+const {payer, pointDeduction } = require('./payer');
 const express = require('express');
 const app = express();
 // const EventEmitter = require('events');
@@ -16,6 +16,10 @@ app.get('/api/users', (rep,res) => {
 
 app.get('/api/payer', (rep,res) => {
   res.send(payer);
+});
+
+app.get('/api/deduction', (rep,res) => {
+  res.send(pointDeduction);
 });
 
 app.get('/api/users/:id', (req, res) => {

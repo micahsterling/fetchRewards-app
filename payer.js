@@ -81,3 +81,4 @@ console.log("after purchase", payers);
 
 
 module.exports.payer = payers;
+module.exports.pointDeduction = pointDeduction;
