@@ -3,26 +3,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script type="text/javascript" src="user.js"></script>
   </head>
   <body>
     <button id="demo" onclick="totals()">Payer Totals</button>
-    <script>
-      function totals() {
-        window.location.href = "/api/payer/";
-      }
-    </script>
+
     <button id="demo" onclick="deductions()">Deductions</button>
-    <script>
-      function deductions() {
-        window.location.href = "/api/deduction/";
-      }
-    </script>
+
     <button id="demo" onclick="transaction()">Transactions</button>
-    <script>
-      function transaction() {
-        window.location.href = "/api/transaction/";
-      }
-    </script>
+
+    <p></p>
+    <br/ >
+    <button id="demo" onclick="computer()">Buy a Computer</button>
 
     <form action="/test/post-username" method="POST">
       <input type="text" name="username" />

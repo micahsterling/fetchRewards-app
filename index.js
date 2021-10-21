@@ -5,29 +5,36 @@ const {payerTotals, pointDeduction, transaction } = require('./payer');
 const express = require('express');
 const app = express();
 // const EventEmitter = require('events');
+express.static("public");
 
 console.log("PAYER!!!!!",payerTotals);
 // app.get('/', (req, res) => {
 //   res.send('<p>hello world!!!</p>');
 // });
 
+app.get('/user.js', (req,res) => {
+  res.sendFile(path.join(__dirname, 'user.js'));
+});
+
 app.get('/', (req, res,next)=>{
   // res.send('<form action="/test/post-username" method="POST"> <input type="text" name="username">    <button type="submit"> Send </button> </form>'); res.sendFile(path.join(__dirname, 'views', 'add-   user.html'));
   res.sendFile(path.join(__dirname, 'user.html'));
+  console.log('Request Type:', req.method);
+  next();
 });
 
-app.get('/api/users', (rep,res) => {
+app.get('/api/users', (req,res) => {
   res.send(users);
 });
 
-app.get('/api/transaction', (rep,res) => {
+app.get('/api/transaction', (req,res) => {
   res.send(transaction);
 });
-app.get('/api/payer', (rep,res) => {
+app.get('/api/payer', (req,res) => {
   res.send(payerTotals);
 });
 
-app.get('/api/deduction', (rep,res) => {
+app.get('/api/deduction', (req,res) => {
   res.send(pointDeduction);
 });
 

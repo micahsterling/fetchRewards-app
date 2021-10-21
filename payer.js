@@ -1,4 +1,4 @@
-
+const {target} = require('./user');
 
 const Award = new Date('September 19, 2020 23:15:30 UTC').toJSON();
 const date = new Date('November 19, 2020 23:15:30 UTC').toJSON();
@@ -60,7 +60,8 @@ function sortPayerDate(a,b) {
 payers.sort(sortPayerDate);
 console.log("before",payers);
 let counter = 0;
-const target = 5000;
+// let target =  5000;
+console.log("target",target);
 let pointDeduction = [];
 const payerTotals = {};
 
@@ -91,7 +92,7 @@ console.log("after purchase", payers);
 
 console.log("total",payerTotals);
 
-
+// module.exports = payerTotals, pointDeduction, transaction;
 module.exports.payerTotals = payerTotals;
 module.exports.pointDeduction = pointDeduction;
 module.exports.transaction = transaction;

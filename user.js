@@ -8,6 +8,7 @@ const users = [
   {id:2, name: 'James',points: 2000},
   {id:3, name: 'Jim', points: 3000},
 ];
+var target = 0;
 
 class UpdateUserPoints extends EventEmitter {
   points(pointsRecieved) {
@@ -17,9 +18,28 @@ class UpdateUserPoints extends EventEmitter {
   }
 }
 
+function totals() {
+  window.location.href = "/api/payer/";
+  console.log("html function");
+}
+function deductions() {
+  window.location.href = "/api/deduction/";
+}
+function transaction() {
+  window.location.href = "/api/transaction/";
+}
+function computer() {
+  target = 6000;
+  console.log("new target",target);
+}
 
 
+module.exports = users, totals, deductions, transaction, computer;
+module.exports.target = target;
+// module.exports.users = users;
+// module.exports.totals = totals;
+// module.exports.deductions = deductions;
+// module.exports.transaction = transaction;
 
-module.exports = users;
 // module.exports = UpdateUserPoints;
 
