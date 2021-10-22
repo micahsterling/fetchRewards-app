@@ -1,26 +1,24 @@
 const users = require('./user');
 const path = require('path');
 // const User = require('./user');
-const {payerTotals, pointDeduction, transaction } = require('./payer');
+const {payerTotals, pointDeduction, transaction, } = require('./payer');
 const express = require('express');
 const app = express();
 // const EventEmitter = require('events');
 express.static("public");
 
 console.log("PAYER!!!!!",payerTotals);
-// app.get('/', (req, res) => {
-//   res.send('<p>hello world!!!</p>');
-// });
+
+// app.use(computer);
 
 app.get('/user.js', (req,res) => {
   res.sendFile(path.join(__dirname, 'user.js'));
 });
 
-app.get('/', (req, res,next)=>{
-  // res.send('<form action="/test/post-username" method="POST"> <input type="text" name="username">    <button type="submit"> Send </button> </form>'); res.sendFile(path.join(__dirname, 'views', 'add-   user.html'));
+app.get('/', (req, res, next)=>{
   res.sendFile(path.join(__dirname, 'user.html'));
-  console.log('Request Type:', req.method);
-  next();
+  // console.log('Request Type:', req.method);
+  // next();
 });
 
 app.get('/api/users', (req,res) => {
@@ -44,13 +42,17 @@ app.get('/api/users/:id', (req, res) => {
   res.send(user);
 });
 
-app.post('/api/courses',(req, res) => {
-  const user = {
-    id: users.length + 1,
-    name: req.body.name,
-  };
-  users.push(users);
-  res.send(user);
+app.use(express.urlencoded({extended: false}));
+
+app.post('/api/transaction',(req, res) => {
+  // const user = {
+  //   id: users.length + 1,
+  //   name: req.body.name,
+  // };
+  // users.push(users);
+  transaction.push(req.body);
+  console.log(req.body);
+  res.send(transaction);
 });
 
 app.put('/api/users/:id', (req,res) => {
@@ -64,7 +66,12 @@ app.put('/api/users/:id', (req,res) => {
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
 
-
+// var target = 0;
+// function computer(rep,res, next) {
+//   target = 6000;
+//   console.log("new target",target);
+//   next();
+// }
 
 // const user = new User();
 // // Register a listener

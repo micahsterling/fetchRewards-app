@@ -1,5 +1,6 @@
 
 const EventEmitter = require('events');
+// const { nextTick } = require('process');
 
 var points = this.points;
 
@@ -8,7 +9,6 @@ const users = [
   {id:2, name: 'James',points: 2000},
   {id:3, name: 'Jim', points: 3000},
 ];
-var target = 0;
 
 class UpdateUserPoints extends EventEmitter {
   points(pointsRecieved) {
@@ -28,13 +28,16 @@ function deductions() {
 function transaction() {
   window.location.href = "/api/transaction/";
 }
-function computer() {
+var target = 5000;
+function spendPoints(req, res, next) {
+  console.log("target",target);
   target = 6000;
   console.log("new target",target);
+  next();
 }
 
 
-module.exports = users, totals, deductions, transaction, computer;
+module.exports = users, totals, deductions, transaction, spendPoints ;
 module.exports.target = target;
 // module.exports.users = users;
 // module.exports.totals = totals;

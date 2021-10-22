@@ -6,6 +6,7 @@
     <script type="text/javascript" src="user.js"></script>
   </head>
   <body>
+    <p>5000 points have been spent</p>
     <button id="demo" onclick="totals()">Payer Totals</button>
 
     <button id="demo" onclick="deductions()">Deductions</button>
@@ -15,9 +16,12 @@
     <p></p>
     <br/ >
     <button id="demo" onclick="computer()">Buy a Computer</button>
-
-    <form action="/test/post-username" method="POST">
-      <input type="text" name="username" />
+    <p></p>
+    <p>Add a new Transaction</p>
+    <form action="/api/transaction" method="POST">
+      <input type="text" placeholder="Payer" name="payer" />
+      <input type="interger" placeholder="Points" name="points" />
+      <input type="datetime-local" name="timestamp" />
       <button type="submit">Send</button>
     </form>
   </body>

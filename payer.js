@@ -72,7 +72,6 @@ for (let i = 0; i < payers.length; i++) {
       counter += diff;
       pointDeduction.push({"payer": payers[i].payer, "points":-diff}); 
       payers[i].points -= diff;
-      // payerTotals[payers[i].payer] = payers[i].points;
     } else {
       counter += payers[i].points;
       pointDeduction.push({"payer": payers[i].payer, "points":-payers[i].points});
