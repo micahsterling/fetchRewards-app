@@ -4,12 +4,9 @@ const path = require('path');
 const {payerTotals, pointDeduction, transaction, } = require('./payer');
 const express = require('express');
 const app = express();
-// const EventEmitter = require('events');
+
 express.static("public");
 
-console.log("PAYER!!!!!",payerTotals);
-
-// app.use(computer);
 
 app.get('/user.js', (req,res) => {
   res.sendFile(path.join(__dirname, 'user.js'));
@@ -17,8 +14,6 @@ app.get('/user.js', (req,res) => {
 
 app.get('/', (req, res, next)=>{
   res.sendFile(path.join(__dirname, 'user.html'));
-  // console.log('Request Type:', req.method);
-  // next();
 });
 
 app.get('/api/users', (req,res) => {
@@ -45,11 +40,6 @@ app.get('/api/users/:id', (req, res) => {
 app.use(express.urlencoded({extended: false}));
 
 app.post('/api/transaction',(req, res) => {
-  // const user = {
-  //   id: users.length + 1,
-  //   name: req.body.name,
-  // };
-  // users.push(users);
   transaction.push(req.body);
   console.log(req.body);
   res.send(transaction);
@@ -81,5 +71,3 @@ app.listen(port, () => console.log(`Listening on port ${port}...`));
 // user.on('pointsSubtracted', (arg) => {
 //   console.log('points updated',arg);
 // });
-
-// user.points('points recieved');

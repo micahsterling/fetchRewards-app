@@ -1,4 +1,4 @@
-const {target} = require('./user');
+// const {target} = require('./user');
 
 const Award = new Date('September 19, 2020 23:15:30 UTC').toJSON();
 const date = new Date('November 19, 2020 23:15:30 UTC').toJSON();
@@ -31,7 +31,7 @@ function sortPayerName(a,b) {
   return 0;
 }
 payers.sort(sortPayerName);
-console.log("name", payers);
+console.log("name sort", payers);
 
 let first = "";
 for (let i = 0; i < payers.length ;i++) {
@@ -46,7 +46,7 @@ for (let i = 0; i < payers.length ;i++) {
     payers.splice(i, 1);
   }
 }
-console.log("settling", payers);
+console.log("settling up", payers);
 
 function sortPayerDate(a,b) { 
   if (a.timestamp < b.timestamp) {
@@ -58,10 +58,10 @@ function sortPayerDate(a,b) {
   return 0;
 }
 payers.sort(sortPayerDate);
-console.log("before",payers);
+console.log("before deduction",payers);
 let counter = 0;
-// let target =  5000;
-console.log("target",target);
+let target =  5000;
+console.log("points spent",target);
 let pointDeduction = [];
 const payerTotals = {};
 
@@ -89,9 +89,9 @@ for (let i = 0; i < payers.length; i++) {
 console.log("deduct",pointDeduction);
 console.log("after purchase", payers);
 
-console.log("total",payerTotals);
+console.log("total remaining",payerTotals);
 
-// module.exports = payerTotals, pointDeduction, transaction;
+
 module.exports.payerTotals = payerTotals;
 module.exports.pointDeduction = pointDeduction;
 module.exports.transaction = transaction;
